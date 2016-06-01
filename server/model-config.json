@@ -35,5 +35,9 @@
   "Specialty": {
     "dataSource": "MongoDB",
     "public": true
+  },
+  "AppUser": {
+    "dataSource": "MongoDB",
+    "public": true
   }
 }

@@ -1,0 +1,29 @@
+{
+  "name": "AppUser",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "default": "patient"
+    },
+    "phone": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
