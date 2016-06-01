@@ -31,5 +31,9 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Specialty": {
+    "dataSource": "MongoDB",
+    "public": true
   }
 }
