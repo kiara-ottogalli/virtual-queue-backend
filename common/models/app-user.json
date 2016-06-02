@@ -13,11 +13,6 @@
     "lastname": {
       "type": "string"
     },
-    "type": {
-      "type": "string",
-      "required": true,
-      "default": "patient"
-    },
     "phone": {
       "type": "string"
     }
