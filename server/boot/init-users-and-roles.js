@@ -22,7 +22,7 @@ module.exports = function(app) {
 	type: 'admin'
   },
   function(err, user, created){
-	if(err) next(err);
+	if(err) throw(err);
 	
 	if(created)
 		console.log('Created user:', user);
@@ -36,7 +36,7 @@ module.exports = function(app) {
 		name: 'admin'
 	},
 	function(err, role, created){
-	  if(err) next(err);
+	  if(err) throw(err);
 	
 	  if(created) {
 		console.log('Created role:', role);
@@ -46,7 +46,7 @@ module.exports = function(app) {
   		  principalId: user.id
 	    },
 	    function(err, principal){
-		  if(err) next(err);
+		  if(err) throw(err);
 		  
 		  console.log('Created principal:', principal);
 		  
