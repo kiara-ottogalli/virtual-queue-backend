@@ -11,49 +11,62 @@ module.exports = function(app) {
   var Role = app.models.Role;
   var RoleMapping = app.models.RoleMapping;
   
-  User.findOrCreate({
-	  where: {username: 'admin'}
+  Role.findOrCreate({
+	where: {name: 'admin'}
   },
   {
-	username: 'admin',
-	email: 'kiara.ottogalli@gmail.com',
-	password: 'admin',
-	name: 'Kiara',
-	type: 'admin'
+	name: 'admin'
   },
-  function(err, user, created){
+  function(err, role, created){
 	if(err) throw(err);
 	
 	if(created)
-		console.log('Created user:', user);
-	else
-		console.log('Found user:', user);
-	
-	Role.findOrCreate({
-		where: {name: 'admin'}
-	},
-	{
-		name: 'admin'
-	},
-	function(err, role, created){
+	  console.log('Created role:', role.name);
+    else
+      console.log('Found role:', role.name);
+    
+	User.findOrCreate({
+	  where: {username: 'admin'}
+    },
+    {
+	  username: 'admin',
+	  email: 'kiara.ottogalli@gmail.com',
+	  password: 'admin',
+	  name: 'Kiara'
+    },
+    function(err, user, created){
 	  if(err) throw(err);
 	
-	  if(created) {
-		console.log('Created role:', role);
-		
-		role.principals.create({
-	      principalType: RoleMapping.USER,
-  		  principalId: user.id
-	    },
-	    function(err, principal){
-		  if(err) throw(err);
-		  
-		  console.log('Created principal:', principal);
-		  
-	    });
-	  }
+	  if(created)
+		console.log('Created admin user:', user.username);
 	  else
-		console.log('Found role:', role);
+		console.log('Found admin user:', user.username);
+		
+	  role.principals.create({
+	    principalType: RoleMapping.USER,
+  		principalId: user.id
+	  },
+	  function(err, principal){
+		if(err) throw(err);
+		  
+		console.log('User: ', user.username, ' and Role: ', role.name, ' related');
+		  
+	  });
 	});
   });
-};
+  
+  Role.findOrCreate({
+	where: {name: 'doctor'}
+  },
+  {
+	name: 'doctor'
+  },
+  function(err, role, created){
+	if(err) throw(err);
+	
+	if(created)
+	  console.log('Created role:', role.name);
+    else
+      console.log('Found role:', role.name);
+  });
+}
