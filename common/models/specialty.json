@@ -13,7 +13,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "doctors": {
+      "type": "hasMany",
+      "model": "AppUser",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

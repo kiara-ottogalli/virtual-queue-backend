@@ -23,7 +23,20 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "patients": {
+      "type": "hasMany",
+      "model": "AppUser",
+      "foreignKey": "doctorId",
+      "through": "Number"
+    },
+    "doctors": {
+      "type": "hasMany",
+      "model": "AppUser",
+      "foreignKey": "patientId",
+      "through": "Number"
+    }
+  },
   "acls": [],
   "methods": {}
 }

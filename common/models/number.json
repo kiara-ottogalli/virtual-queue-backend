@@ -9,11 +9,22 @@
     "status": {
       "type": "string",
       "required": true,
-      "default": "'in line'"
+      "default": "in line"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "doctor": {
+      "type": "belongsTo",
+      "model": "AppUser",
+      "foreignKey": "doctorId"
+    },
+    "patient": {
+      "type": "belongsTo",
+      "model": "AppUser",
+      "foreignKey": "patientId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
