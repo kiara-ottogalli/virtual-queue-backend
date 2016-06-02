@@ -37,21 +37,22 @@ module.exports = function(app) {
     function(err, user, created){
 	  if(err) throw(err);
 	
-	  if(created)
+	  if(created){
 		console.log('Created admin user:', user.username);
+		
+		role.principals.create({
+  	      principalType: RoleMapping.USER,
+  		  principalId: user.id
+	    },
+	    function(err, principal){
+		  if(err) throw(err);
+		  
+		  console.log('User: ', user.username, ' and Role: ', role.name, ' related');
+		  
+	    });
+	  }
 	  else
 		console.log('Found admin user:', user.username);
-		
-	  role.principals.create({
-	    principalType: RoleMapping.USER,
-  		principalId: user.id
-	  },
-	  function(err, principal){
-		if(err) throw(err);
-		  
-		console.log('User: ', user.username, ' and Role: ', role.name, ' related');
-		  
-	  });
 	});
   });
   
