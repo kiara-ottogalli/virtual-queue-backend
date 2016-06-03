@@ -29,8 +29,8 @@
     "public": true
   },
   "Role": {
-    "dataSource": "MongoDB",
-    "public": true
+    "dataSource": "db",
+    "public": false
   },
   "Specialty": {
     "dataSource": "MongoDB",
@@ -41,6 +41,10 @@
     "public": true
   },
   "Number": {
+    "dataSource": "MongoDB",
+    "public": true
+  },
+  "AppRole": {
     "dataSource": "MongoDB",
     "public": true
   }
