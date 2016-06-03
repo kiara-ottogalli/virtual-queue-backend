@@ -32,9 +32,9 @@ module.exports = function(app) {
       },
       {
         username: 'admin',
-        email: 'kiara.ottogalli@gmail.com',
+        email: 'admin@localhost.com',
         password: 'admin',
-        name: 'Kiara'
+        name: 'admin'
       },
       function(err, user, created){
         if(err) throw(err);
