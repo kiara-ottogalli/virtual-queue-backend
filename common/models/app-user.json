@@ -23,13 +23,15 @@
       "type": "hasMany",
       "model": "AppUser",
       "foreignKey": "doctorId",
-      "through": "Number"
+      "through": "Number",
+      "keyThrough": "patientId"
     },
     "doctors": {
       "type": "hasMany",
       "model": "AppUser",
       "foreignKey": "patientId",
-      "through": "Number"
+      "through": "Number",
+      "keyThrough": "doctorId"
     }
   },
   "acls": [
