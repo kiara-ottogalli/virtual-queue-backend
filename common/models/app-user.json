@@ -23,14 +23,14 @@
       "type": "hasMany",
       "model": "AppUser",
       "foreignKey": "doctorId",
-      "through": "Number",
+      "through": "AttentionNumber",
       "keyThrough": "patientId"
     },
     "doctors": {
       "type": "hasMany",
       "model": "AppUser",
       "foreignKey": "patientId",
-      "through": "Number",
+      "through": "AttentionNumber",
       "keyThrough": "doctorId"
     }
   },

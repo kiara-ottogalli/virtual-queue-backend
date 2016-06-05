@@ -40,7 +40,7 @@
     "dataSource": "MongoDB",
     "public": true
   },
-  "Number": {
+  "AttentionNumber": {
     "dataSource": "MongoDB",
     "public": true
   },
