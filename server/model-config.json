@@ -47,5 +47,9 @@
   "AppRole": {
     "dataSource": "MongoDB",
     "public": true
+  },
+  "AppRoleMapping": {
+    "dataSource": "MongoDB",
+    "public": true
   }
 }

@@ -9,7 +9,7 @@ module.exports = function(app) {
   var Mongo = app.dataSources.MongoDB;
   var User = app.models.AppUser;
   var Role = app.models.AppRole;
-  var RoleMapping = app.models.RoleMapping;
+  var RoleMapping = app.models.AppRoleMapping;
 
   Mongo.autoupdate(function (err, result) {
     
@@ -42,7 +42,7 @@ module.exports = function(app) {
         if(created){
           console.log('Created admin user:', user.username);
       
-          role.principals.create({
+          role.roleMappings.create({
             principalType: RoleMapping.USER,
             principalId: user.id
           },
