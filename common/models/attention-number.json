@@ -5,15 +5,15 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "TimeStamp": true
+  },
   "properties": {
     "status": {
       "type": "string",
       "required": true,
       "default": "in line"
     }
-  },
-  "mixins": {
-    "TimeStamp": true
   },
   "validations": [],
   "relations": {
