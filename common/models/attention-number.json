@@ -12,6 +12,9 @@
       "default": "in line"
     }
   },
+  "mixins": {
+    "TimeStamp": true
+  },
   "validations": [],
   "relations": {
     "doctor": {
