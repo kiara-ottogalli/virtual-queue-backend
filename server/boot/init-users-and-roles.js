@@ -10,8 +10,32 @@ module.exports = function(app) {
   var User = app.models.AppUser;
   var Role = app.models.AppRole;
   var RoleMapping = app.models.AppRoleMapping;
+  var Specialty = app.models.Specialty;
 
   Mongo.autoupdate(function (err, result) {
+    
+    var specialties = [
+      {name: 'general medicine', image: 'general-medicine.jpg'},
+      {name: 'cardiology', image: 'cardiology.jpg'},
+      {name: 'odontology', image: 'odontology.jpg'},
+      {name: 'ophthalmology', image: 'ophthalmology.jpg'},
+      {name: 'dermatology', image: 'dermatology.jpg'},
+      {name: 'gynecology', image: 'gynecology.jpg'}
+    ];
+    
+    specialties.forEach(function(element) {
+      Specialty.findOrCreate({
+        where: {name: element.name}
+      },
+      element,
+      function (err, specialty, created) {
+        if(err) throw(err);
+        if(created)
+          console.log('Created specialty: ', specialty.name);
+        else
+          console.log('Found specialty: ', specialty.name);
+      });
+    });
     
     Role.findOrCreate({
       where: {name: 'admin'}
