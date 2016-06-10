@@ -43,6 +43,11 @@
       "foreignKey": "principalId",
       "through": "AppRoleMapping",
       "keyThrough": "roleId"
+    },
+    "patientNumbers": {
+      "type": "hasMany",
+      "model": "AttentionNumber",
+      "foreignKey": "doctorId"
     }
   },
   "acls": [
