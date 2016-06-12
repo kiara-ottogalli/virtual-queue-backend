@@ -1,0 +1,39 @@
+<div class="container-fluid" ng-if="!alreadyInLine">
+    <div class="row">
+		<div class="col-sm-12">
+            <h2>Your number is</h2>
+		</div>
+    </div>
+    <div class="row">
+		<div class="col-sm-12">
+            <div class="text-center">
+                <h1>{{lastNumber}}</h1>
+            </div>
+		</div>
+    </div>
+	<div class="row">
+        &nbsp;
+		<div class="col-sm-12">
+            <p><span class="text-primary">Dr. {{doctor.name}} {{doctor.lastname}}</span> <span ng-if="currentNumber>0">is attending number {{currentNumber}}</span><span ng-if="currentNumber===0">will attend you soon.</span></p>
+		</div>
+        &nbsp;
+	</div>
+    <div class="row">
+		<div class="col-xs-6">
+            <button type="button" class="btn btn-danger btn-block" ng-click="closeThisDialog()">Cancel</button>
+		</div>
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-success btn-block" ng-click="confirm()">Ok</button>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" ng-if="alreadyInLine">
+    <div class="row">
+        &nbsp;
+		<div class="col-sm-12">
+            <p>Your number is <span class="text-primary">{{lineNumber}}</span></p>
+            <p><span class="text-primary">Dr. {{doctor.name}} {{doctor.lastname}}</span> will attend you soon.</p>
+		</div>
+        &nbsp;
+	</div>
+</div>

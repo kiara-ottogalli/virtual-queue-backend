@@ -1,0 +1,49 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-header">
+				<h2>Choose a Doctor <small ng-if="showSpecialty" class="text-capitalize">{{specialty.name}}</small></h2>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		
+		<div ng-if="showSpecialty">
+		
+			<div class="col-xs-12" ng-if="!existDoctors">
+				<p>Currently there are no doctors in this specialty.</p>
+            </div>
+            
+			<div class="col-sm-6" ng-if="existDoctors" ng-repeat="doctor in doctors">
+				<ul class="media-list">
+					<li class="media">
+						<div class="media-left media-middle">
+							<a ng-click="openDialog(doctor.id, token.userid)">
+								<img class="media-object img-thumbnail img-circle img-width-60" ng-src="images/{{doctor.image}}" alt="{{doctor.name}} {{doctor.lastname}}">
+							</a>
+						</div>
+						<div class="media-body media-middle">
+							<h4 class="media-heading">Dr. {{doctor.name}} {{doctor.lastname}}</h4>
+						</div>
+					</li>
+				</ul>
+			</div>
+		
+		</div>
+		
+		<div class="col-xs-12" ng-if="!showSpecialty">
+            <p class="text-danger">Oops! there's an error: {{message.code}} {{message.text}}</p>
+        </div>
+		
+	</div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <a class="btn btn-primary pull-right" ui-sref="specialties" role="button">Back to specialties</a>
+        </div>
+        &nbsp;
+    </div>
+    
+</div>

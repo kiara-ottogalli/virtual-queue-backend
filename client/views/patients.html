@@ -1,0 +1,125 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-header">
+				<h2>Currently Attending</h2>
+			</div>
+		</div>
+	</div>
+	
+    <div ng-if="showPatients">
+        
+        <!-- Currently Attending -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row" ng-if="existPatients && current">
+                            <div class="col-sm-4">
+                                <img class="img-thumbnail img-responsive" ng-src="images/{{current.patient.image}}" alt="{{current.patient.name}}">
+                            </div>
+                            <div class="col-sm-8">
+                                <h3>{{current.patient.name}} {{current.patient.lastname}}</h3>
+                                <p><b>Phone:</b> {{current.patient.phone}}</p>
+                                <p><b>Email:</b> {{current.patient.email}}</p>
+
+                                <form class="form form-inline padding-patients pull-right" ng-submit="callNext()">
+                                    <div class="form-group">
+                                        <label>Did the patient arrive?</label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yes" ng-model="form.arrived" checked> Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="no" ng-model="form.arrived"> No
+                                        </label>
+                                    </div>
+                                    &nbsp;&nbsp;<button type="submit" class="btn btn-primary">Call Next</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="row" ng-if="!existPatients || !current">
+                            <div class="col-sm-12">
+                                <p>Currently there is no patient being attended by the doctor.</p>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="existPatients && !current">
+                            <div class="col-sm-12">
+                                <form class="form form-inline padding-patients pull-right">
+                                    <button type="submit" class="btn btn-primary" ng-click="callNext()">Call Next</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Patients in line and attended -->
+        <div class="row">
+            
+            <!-- In line -->
+            <div class="col-sm-6">
+                
+                <h3>In Line</h3>
+                
+                <div ng-if="!existPatients || line.length === 0">
+				    <p>Currently there are no patients to attend.</p>
+                </div>
+
+                <div ng-if="existPatients && line.length > 0">
+                    <ul class="media-list">
+                        <li class="media" ng-repeat="item in line">
+                            <div class="media-left media-middle">
+                                <img class="media-object img-thumbnail img-circle img-width-60" ng-src="images/{{item.patient.image}}" alt="{{item.patient.name}}">
+                            </div>
+                            <div class="media-body media-middle">
+                                <h4 class="media-heading">{{item.patient.name}} {{item.patient.lastname}}</h4>
+                            </div>
+                            <div class="media-right media-middle">
+                                <p class="text-info"><span class="glyphicon glyphicon-time"></span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <!-- Attended -->
+            <div class="col-sm-6">
+                
+                <h3>Attended</h3>
+                
+                <div ng-if="!existPatients || attended.length === 0">
+				    <p>Currently there are no patients attended.</p>
+                </div>
+
+                <div ng-if="existPatients && attended.length > 0">
+                    <ul class="media-list">
+                        <li class="media" ng-repeat="item in attended">
+                            <div class="media-left media-middle">
+                                <img class="media-object img-thumbnail img-circle img-width-60" ng-src="images/{{item.patient.image}}" alt="{{item.patient.name}}">
+                            </div>
+                            <div class="media-body media-middle">
+                                <h4 class="media-heading">{{item.patient.name}} {{item.patient.lastname}}</h4>
+                            </div>
+                            <div class="media-right media-middle">
+                                <p class="text-success" ng-if="item.status==='attended'"><span class="glyphicon glyphicon-ok"></span></p>
+                                <p class="text-danger" ng-if="item.status==='did not arrive'"><span class="glyphicon glyphicon-remove"></span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="row" ng-if="!showPatients">
+        <div class="col-xs-12">
+            <p class="text-danger">Oops! there's an error: {{message.code}} {{message.text}}</p>
+        </div>
+    </div>
+	
+</div>

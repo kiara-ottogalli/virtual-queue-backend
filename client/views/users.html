@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row">
+        <div class="col-sm-7">
+            <div class="page-header">
+				<h2>Register a User</h2>
+			</div>
+            <div class="alert alert-danger" ng-show="message !== ''">
+                <p>Oops! there's an error: {{message.code}} {{message.text}}</p>
+            </div>
+            <form name="registrationForm" ng-submit="registerUser()">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="form.name">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Lastname" ng-model="form.lastname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="something@example.com" ng-model="form.email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" placeholder="+581234567890" ng-model="form.phone">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="name_lastname" ng-model="form.username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="password" ng-model="form.password">
+                </div>
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select class="form-control text-capitalize" id="rol" ng-model="rol">
+                        <option ng-repeat="role in roles" ng-value="role.id" class="text-capitalize">{{role.name}}</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary pull-right" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <div class="page-header">
+				<h2>Your input</h2>
+			</div>
+            <p><b>Name:</b> {{form.name}}</p>
+            <p><b>Lastname:</b> {{form.lastname}}</p>
+            <p><b>Email:</b> {{form.email}}</p>
+            <p><b>Phone:</b> {{form.phone}}</p>
+            <p><b>Username:</b> {{form.username}}</p>
+            <p><b>Rol:</b> {{rol}}</p>
+        </div>
+	</div>
+</div>
+&nbsp;

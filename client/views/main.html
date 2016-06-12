@@ -1,0 +1,58 @@
+<div class="container">
+
+	<div class="row" ng-if="showNumbers">
+		<div class="col-sm-12">
+			<div class="page-header">
+				<h2>Your Numbers</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-if="showNumbers">
+		<div class="col-sm-12">
+			<ul class="list-group">
+				<li class="list-group-item" ng-repeat="number in numbers" data-ng-mouseover="showCancelButton=true" data-ng-mouseleave="showCancelButton=false">
+					<h4>
+						<span class="label label-primary">{{number.position}}</span> 
+						Dr. {{number.doctor.name}} {{number.doctor.lastname}} <span class="text-capitalize">({{number.doctor.specialty}})</span>
+						<small ng-if="!number.attending">will attend you soon.</small>
+						<small ng-if="number.attending">currently attending number {{number.attending}}</small>
+						<span class="glyphicon glyphicon-remove pull-right text-danger" aria-hidden="true" ng-if="showCancelButton" ng-click="cancelNumber(number)"></span>
+					</h4>					
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="page-header">
+				<h2>Choose a Specialty</h2>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row row-content">
+		
+		<div class="col-xs-12" ng-if="!existSpecialties">
+			<p>Currently there are no specialties.</p>
+		</div>
+		
+		<div class="col-sm-6 col-md-4" ng-if="showSpecialties" ng-repeat="specialty in specialties">
+			<div class="thumbnail hover-gray">
+				<a ui-sref="specialties.doctors({id:specialty.id})">
+					<img class="img-responsive" ng-src="images/{{specialty.image}}" alt="{{specialty.name}}">
+					<div class="caption text-center">
+						<h4 class="text-capitalize">{{specialty.name}}</h4>
+					</div>
+				</a>
+			</div>
+		</div>
+		
+		<div class="col-xs-12" ng-if="!showSpecialties">
+            <p>Oops! there's an error: {{message.code}} {{message.text}}</p>
+        </div>
+		
+	</div>
+	
+</div>
