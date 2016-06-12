@@ -6,11 +6,11 @@
   "MongoDB": {
     "host": "localhost",
     "port": 27017,
-    "url": "mongodb://localhost:27017/virtual-queue",
+    "url": "mongodb://admin:1234@ds021691.mlab.com:21691/virtual-queue",
     "database": "virtual-queue",
-    "password": "",
+    "password": "1234",
     "name": "MongoDB",
-    "user": "",
+    "user": "admin",
     "connector": "mongodb"
   }
 }
